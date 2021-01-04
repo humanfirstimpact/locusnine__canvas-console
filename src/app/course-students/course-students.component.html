@@ -34,7 +34,14 @@
             <!-- Email Column -->
             <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef> Email </th>
-                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                <td mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element.email">
+                        {{element.email}}
+                    </ng-container>
+                    <ng-container *ngIf="!element.email">
+                        <span class="pendingInvite">Pending Invite</span>
+                    </ng-container>
+                </td>
             </ng-container>
 
             <!-- Completed Column -->
@@ -45,8 +52,11 @@
                         <span class="ln-spinner"></span>
                     </ng-container>
                     <ng-container *ngIf="element.completed !== undefined">
-                        <mat-icon style="color: green;" *ngIf="element.completed">check</mat-icon>
-                        <mat-icon style="color: red;" *ngIf="!element.completed">close</mat-icon>
+                        <mat-icon style="color: green;" *ngIf="isCompleted(element.completed)">check</mat-icon>
+                        <span *ngIf="element.email && !isCompleted(element.completed)">
+                            {{element.completed.completed}}/{{element.completed.total}}
+                        </span>
+                        <span *ngIf="!element.email" class="pendingInvite">-NA-</span>
                     </ng-container>
                 </td>
             </ng-container>

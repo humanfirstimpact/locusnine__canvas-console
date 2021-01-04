@@ -44,14 +44,17 @@ export class CourseStudentsComponent implements OnInit {
           this._api.getCourseModulesForStudent(this.courseId, s.id, options)
             .subscribe(items => {
               //Check if all items of students are completed
-              s.completed = items.every(i => !!i.completed_at);
+              s.completed = {
+                total: items.length,
+                completed: items.filter(i => !!i.completed_at).length
+              };
             })
         });
       });
   }
 
   sendCompletionCertificate() {
-    const students = this.students.filter(s => !!s.completed);
+    const students = this.students.filter(s => s.completed && s.completed.completed === s.completed.total);
     const course = this.courses.find(c => c.id == this.courseId);
     this._api.sendCertificates({
       course: { id: course.id, name: course.name },
@@ -61,5 +64,9 @@ export class CourseStudentsComponent implements OnInit {
         duration: 2000,
       });
     });
+  }
+
+  isCompleted(courseCompletion: any) {
+    return courseCompletion && courseCompletion.total === courseCompletion.completed;
   }
 }
