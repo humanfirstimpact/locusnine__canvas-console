@@ -39,31 +39,19 @@ export class CourseStudentsComponent implements OnInit {
       .subscribe(students => {
         this.students = students;
         this.loading = false;
-
-        students.forEach(s => {
-          this._api.getCourseModulesForStudent(this.courseId, s.id, options)
-            .subscribe(items => {
-              //Check if all items of students are completed
-              s.completed = {
-                total: items.length,
-                completed: items.filter(i => !!i.completed_at).length
-              };
-            })
-        });
       });
   }
 
   sendCompletionCertificate() {
-    const students = this.students.filter(s => s.completed && s.completed.completed === s.completed.total);
-    const course = this.courses.find(c => c.id == this.courseId);
-    this._api.sendCertificates({
-      course: { id: course.id, name: course.name },
-      students: students.map(s => { return { id: s.id, name: s.name, email: s.email }; })
-    }).subscribe(response => {
-      this._snackBar.open(`Sent: ${response.sent}, failed: ${response.failed}`, null, {
-        duration: 2000,
+    // const students = this.students.filter(s => s.completed && s.completed.completed === s.completed.total);
+    // const course = this.courses.find(c => c.id == this.courseId);
+    const options = { oauthKey: this.oauthKey };
+    this._api.sendCertificates(this.courseId, options)
+      .subscribe(response => {
+        this._snackBar.open(`Sent: ${response.sent}, failed: ${response.failed}`, null, {
+          duration: 2000,
+        });
       });
-    });
   }
 
   isCompleted(courseCompletion: any) {

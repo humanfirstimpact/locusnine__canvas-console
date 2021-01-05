@@ -48,10 +48,9 @@ export class ApiService {
       this._getServerPublicKey()
         .subscribe(() => {
           this._http
-            .get(`${environment.api}/proxy/api/v1/courses/${courseId}/users`, {
+            .get(`${environment.api}/course-students`, {
               params: {
-                'enrollment_type[]': 'student',
-                'per_page': '100'
+                courseId: courseId
               },
               headers: {
                 api_token: this._encrypt(options.oauthKey),
@@ -65,36 +64,43 @@ export class ApiService {
     });
   }
 
-  getCourseModulesForStudent(courseId: string, studentId: string, options: any): Observable<any> {
-    return new Observable(observer => {
-      this._getServerPublicKey()
-        .subscribe(() => {
-          this._http
-            .get(`${environment.api}/proxy/api/v1/courses/${courseId}/modules`, {
-              params: {
-                'student_id': studentId,
-                'include[]': 'items',
-                'per_page': '100'
-              },
-              headers: {
-                api_token: this._encrypt(options.oauthKey),
-                client_key: encodeBase64(this._clientKeyPair.publicKey)
-              }
-            }).subscribe((data: any) => {
-              observer.next(data);
-              observer.complete();
-            });
-        });
-    });
-  }
+  // getCourseModulesForStudent(courseId: string, studentId: string, options: any): Observable<any> {
+  //   return new Observable(observer => {
+  //     this._getServerPublicKey()
+  //       .subscribe(() => {
+  //         this._http
+  //           .get(`${environment.api}/proxy/api/v1/courses/${courseId}/modules`, {
+  //             params: {
+  //               'student_id': studentId,
+  //               'include[]': 'items',
+  //               'per_page': '100'
+  //             },
+  //             headers: {
+  //               api_token: this._encrypt(options.oauthKey),
+  //               client_key: encodeBase64(this._clientKeyPair.publicKey)
+  //             }
+  //           }).subscribe((data: any) => {
+  //             observer.next(data);
+  //             observer.complete();
+  //           });
+  //       });
+  //   });
+  // }
 
-  sendCertificates(studentDetails: any): Observable<any> {
+  sendCertificates(courseId: string, options: any): Observable<any> {
     return new Observable(observer => {
-      this._http.post(`${environment.api}/send-certificates`, studentDetails)
-        .subscribe((data: any) => {
-          observer.next(data);
-          observer.complete();
-        });
+      this._http.post(`${environment.api}/send-certificates`, null, {
+        params: {
+          courseId: courseId
+        },
+        headers: {
+          api_token: this._encrypt(options.oauthKey),
+          client_key: encodeBase64(this._clientKeyPair.publicKey)
+        }
+      }).subscribe((data: any) => {
+        observer.next(data);
+        observer.complete();
+      });
     });
   }
 
