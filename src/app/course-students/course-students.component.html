@@ -2,7 +2,7 @@
     <form class="ln-form" autocomplete="off">
         <mat-form-field class="ln-form-field oauthKey">
             <mat-label>OAuth Key</mat-label>
-            <input type="text" name="oauthKey" matInput [ngModel]="oauthKey" (change)="getCourses($event)" required
+            <input type="password" name="oauthKey" matInput [ngModel]="oauthKey" (change)="getCourses($event)" required
                 placeholder="OAuth Key">
             <mat-error *ngIf="!oauthKey">
                 OAuth Key is <strong>required</strong>
@@ -10,16 +10,13 @@
         </mat-form-field>
         <mat-form-field class="ln-form-field courseId">
             <mat-label>Courses</mat-label>
-            <mat-select [(ngModel)]="courseId" name="courseId" [disabled]="!courses">
+            <mat-select [(ngModel)]="courseId" name="courseId" [disabled]="!courses" (selectionChange)="getStudents()">
                 <mat-option [value]="">--Select Course--</mat-option>
                 <mat-option *ngFor="let course of courses" [value]="course.id">
                     {{course.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="getStudents()" [disabled]="!oauthKey || loading">
-            Get Course Students
-        </button>
     </form>
 
     <ng-container *ngIf="!loading && students && students.length>0">
