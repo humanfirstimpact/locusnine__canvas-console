@@ -10,6 +10,7 @@ import { ApiService } from 'src/services/api.service';
 export class CourseStudentsComponent implements OnInit {
 
   loading: boolean = false;
+  sendingEmails: boolean = false;
   oauthKey: string;
   courseId: string;
   courses: any[];
@@ -43,11 +44,11 @@ export class CourseStudentsComponent implements OnInit {
   }
 
   sendCompletionCertificate() {
-    // const students = this.students.filter(s => s.completed && s.completed.completed === s.completed.total);
-    // const course = this.courses.find(c => c.id == this.courseId);
+    this.sendingEmails = true;
     const options = { oauthKey: this.oauthKey };
     this._api.sendCertificates(this.courseId, options)
       .subscribe(response => {
+        this.sendingEmails = false;
         this._snackBar.open(`Sent: ${response.sent}, failed: ${response.failed}`, null, {
           duration: 2000,
         });

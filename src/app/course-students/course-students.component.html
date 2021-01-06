@@ -77,7 +77,11 @@
         </div>
     </ng-container>
 
-    <button mat-raised-button color="primary" (click)="sendCompletionCertificate()" class="sendCompletionCertificate">
+    <button mat-raised-button color="primary" (click)="sendCompletionCertificate()" class="sendCompletionCertificate"
+        [disabled]="sendingEmails">
         Send Completion Certificate
     </button>
 </div>
+<ng-container *ngIf="sendingEmails">
+    <div class="ln-spinner"></div>
+</ng-container>
