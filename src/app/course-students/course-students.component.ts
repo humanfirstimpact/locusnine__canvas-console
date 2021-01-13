@@ -54,10 +54,6 @@ checkboxChanged(event) {
     }
 }
 
-submit(){
-  console.log(this.selectedStudents);
-}
-
   sendCompletionCertificate() {
     this.sendingEmails = true;
     const options = { oauthKey: this.oauthKey };
