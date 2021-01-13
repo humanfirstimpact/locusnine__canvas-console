@@ -87,9 +87,9 @@ export class ApiService {
   //   });
   // }
 
-  sendCertificates(courseId: string, options: any): Observable<any> {
+  sendCertificates(courseId: string, selectedStudents:any, options: any): Observable<any> {
     return new Observable(observer => {
-      this._http.post(`${environment.api}/send-certificates`, null, {
+      this._http.post(`${environment.api}/send-certificates`, selectedStudents, {
         params: {
           courseId: courseId
         },

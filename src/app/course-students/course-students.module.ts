@@ -8,6 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule} from '@angular/material/checkbox';
 
 import { CourseStudentsRoutingModule } from './course-students-routing.module';
 import { CourseStudentsComponent } from './course-students.component';
@@ -25,7 +26,8 @@ import { CourseStudentsComponent } from './course-students.component';
     MatTableModule,
     MatIconModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule,
   ]
 })
 export class CourseStudentsModule { }
