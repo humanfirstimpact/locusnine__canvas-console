@@ -43,21 +43,21 @@ export class CourseStudentsComponent implements OnInit {
         this.students = students;
         this.loading = false;
       });
-  }  
+  }
 
-checkboxChanged(event) {
-    const id = event.source.id; 
+  checkboxChanged(event) {
+    const id = event.source.id;
     if (event.checked) this.selectedStudents.push(parseInt(id));
     else {
-        const i = this.selectedStudents.indexOf(parseInt(id));
-        this.selectedStudents.splice(i, 1);
+      const i = this.selectedStudents.indexOf(parseInt(id));
+      this.selectedStudents.splice(i, 1);
     }
-}
+  }
 
   sendCompletionCertificate() {
     this.sendingEmails = true;
     const options = { oauthKey: this.oauthKey };
-    this._api.sendCertificates(this.courseId,this.selectedStudents, options)
+    this._api.sendCertificates(this.courseId, this.selectedStudents, options)
       .subscribe(response => {
         this.sendingEmails = false;
         this._snackBar.open(`Sent: ${response.sent}, failed: ${response.failed}`, null, {
