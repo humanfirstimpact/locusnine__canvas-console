@@ -1,10 +1,9 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { box, randomBytes, BoxKeyPair } from 'tweetnacl';
 import {
   decodeUTF8,
-  encodeUTF8,
   encodeBase64,
   decodeBase64
 } from 'tweetnacl-util';
@@ -87,7 +86,7 @@ export class ApiService {
   //   });
   // }
 
-  sendCertificates(courseId: string, selectedStudents:any, options: any): Observable<any> {
+  sendCertificates(courseId: string, selectedStudents: any, options: any): Observable<any> {
     return new Observable(observer => {
       this._http.post(`${environment.api}/send-certificates`, selectedStudents, {
         params: {
