@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-ln-course',
@@ -11,5 +11,8 @@ export class LnCourseComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+@Input() courseTitle: string;
+@Input() courseInstructor: string;
+@Input() courseDuration:string;
+@Input() courseDate:string;
 }
