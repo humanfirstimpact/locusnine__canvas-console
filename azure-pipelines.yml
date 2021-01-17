@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -33,7 +33,7 @@ steps:
     Destination: 'AzureBlob'
     storage: 'canvaspocmanual'
     ContainerName: '$web'
-    
+
 - script: |
     npm install -g @angular/cli
     npm install
