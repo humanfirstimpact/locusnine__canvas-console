@@ -15,17 +15,6 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/dist'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'    
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'  
 - task: AzureFileCopy@4
   inputs:
     SourcePath: '$(Build.ArtifactStagingDirectory)/dist/canvas-console'
