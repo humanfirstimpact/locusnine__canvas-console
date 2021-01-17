@@ -15,6 +15,12 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+  displayName: 'npm install and build'
+
 - task: AzureFileCopy@4
   inputs:
     SourcePath: '$(Build.ArtifactStagingDirectory)/dist/canvas-console'
@@ -22,9 +28,3 @@ steps:
     Destination: 'AzureBlob'
     storage: 'canvaspocmanual'
     ContainerName: '$web'
-
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
