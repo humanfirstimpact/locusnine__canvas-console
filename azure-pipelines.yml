@@ -17,9 +17,15 @@ steps:
 
 - script: |
     npm install -g @angular/cli
+  displayName: 'Install Angular'
+
+- script: |
     npm install
+  displayName: 'Install application packages'
+
+- script: |
     npm run build:prod
-  displayName: 'npm install and build'
+  displayName: 'Build application'
 
 - task: AzureFileCopy@4
   inputs:
