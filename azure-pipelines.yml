@@ -29,7 +29,7 @@ steps:
 
 - task: AzureFileCopy@4
   inputs:
-    SourcePath: '$(Build.ArtifactStagingDirectory)/dist/canvas-console'
+    SourcePath: '$(Build.SourcesDirectory)/dist/canvas-console'
     azureSubscription: 'canvas-poc-service-connection'
     Destination: 'AzureBlob'
     storage: 'canvaspocmanual'
