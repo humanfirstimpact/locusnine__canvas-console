@@ -1,7 +1,8 @@
 .ln-container {
     width: 800px;
     margin: auto;
-    padding-top: 20px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .ln-table {
@@ -90,6 +91,8 @@
 
 .sendCompletionCertificate {
     margin-top: 20px;
+    background-color: #51bebb;
+    color: #fff;
 }
 
 .pendingInvite {

@@ -1,0 +1,24 @@
+$formWidth: 300px;
+
+form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: $formWidth;
+
+    mat-form-field {
+        width: $formWidth;
+    }
+
+    button {
+        width: $formWidth;
+        background-color: #51bebb;
+        color: #fff;
+    }
+}

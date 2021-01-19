@@ -1,0 +1,13 @@
+<form class="ln-form" autocomplete="off">
+    <mat-form-field class="ln-form-field oauthKey">
+        <mat-label>OAuth Key</mat-label>
+        <input type="password" name="oauthKey" matInput [(ngModel)]="oauthKey" required placeholder="OAuth Key">
+        <mat-error *ngIf="!oauthKey">
+            OAuth Key is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="login()">
+        Sign in with Canvas
+    </button>
+</form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiService } from 'src/services/api.service';
 
@@ -7,16 +7,16 @@ import { ApiService } from 'src/services/api.service';
   templateUrl: './course-students.component.html',
   styleUrls: ['./course-students.component.scss']
 })
-export class CourseStudentsComponent implements OnInit {
+export class CourseStudentsComponent implements OnInit, OnChanges {
   checked: boolean = false;
   loading: boolean = false;
   sendingEmails: boolean = false;
-  oauthKey: string;
-  courseId: string;
   courses: any[];
   students: any[];
   columns: string[] = ['select', 'name', 'email', 'completed'];
   selectedStudents = [];
+
+  @Input() courseId: string;
 
   constructor(
     private _api: ApiService,
@@ -26,19 +26,16 @@ export class CourseStudentsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getCourses(e) {
-    this.oauthKey = e.currentTarget.value;
-    this._api.getCourses({ oauthKey: this.oauthKey })
-      .subscribe(courses => {
-        this.courses = courses;
-      });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes && changes.courseId && changes.courseId.currentValue) {
+      this.getStudents();
+    }
   }
 
   getStudents() {
-    const options = { oauthKey: this.oauthKey };
     this.loading = true;
     this.selectedStudents.splice(0, this.selectedStudents.length);
-    this._api.getCourseStudents(this.courseId, options)
+    this._api.getCourseStudents(this.courseId)
       .subscribe(students => {
         this.students = students;
         this.loading = false;
@@ -56,8 +53,7 @@ export class CourseStudentsComponent implements OnInit {
 
   sendCompletionCertificate() {
     this.sendingEmails = true;
-    const options = { oauthKey: this.oauthKey };
-    this._api.sendCertificates(this.courseId, this.selectedStudents, options)
+    this._api.sendCertificates(this.courseId, this.selectedStudents)
       .subscribe(response => {
         this.sendingEmails = false;
         this._snackBar.open(`Sent: ${response.sent}, failed: ${response.failed}`, null, {
