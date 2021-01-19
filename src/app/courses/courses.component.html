@@ -1,6 +1,4 @@
-
-<section class="section-banner"
-    style="background-image:url(./assets/bannerImage.jpg);">
+<section class="section-banner" style="background-image:url(./assets/bannerImage.jpg);">
     <div class="heading">
         <p class="course-head">Life is good</p>
         <p class="course-subheading">Be better
@@ -10,7 +8,8 @@
 <section class="course-section">
     <div class="course-heading">
         <p class="course-head">All our Courses</p>
-        <p class="course-subheading">Learn the most relevant skills by experienced professionals in international education.</p>
+        <p class="course-subheading">Learn the most relevant skills by experienced professionals in international
+            education.</p>
     </div>
     <form class="ln-form" autocomplete="off">
         <mat-form-field class="ln-form-field oauthKey">
@@ -22,9 +21,15 @@
             </mat-error>
         </mat-form-field>
     </form>
+
     <div class="container">
+        
+        <div class="filters">
+            <p>Filters</p>
+        </div>
         <div class="course-card_list" [(ngModel)]="courseId" name="courseId">
-            <app-ln-course *ngFor="let course of courses" [value]="course.id" [courseTitle]="course.name" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
+            <app-ln-course *ngFor="let course of courses" [value]="course.id" [courseTitle]="course.name"
+                [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
         </div>
     </div>
 </section>
