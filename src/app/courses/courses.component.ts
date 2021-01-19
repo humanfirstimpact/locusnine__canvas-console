@@ -12,8 +12,7 @@ export class CoursesComponent implements OnInit {
   tutor1= 'International Schools';
   duration1='1h';
   date='January 15, 2021';
-
-
+  courseId: string;
   oauthKey: string;
   courses: any[];
 

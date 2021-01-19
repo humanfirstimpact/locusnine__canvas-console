@@ -55,6 +55,19 @@ font-size: 24px;
 line-height: 1.5;
 margin-bottom: 50px;
 }
+
+.ln-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.ln-form-field{
+    width: 360px;
+    position: relative;
+    left: 150px;
+}
+
 .container{
     max-width: 1140px;
     width: 100%;

@@ -1,3 +1,4 @@
+
 <section class="section-banner"
     style="background-image:url(./assets/bannerImage.jpg);">
     <div class="heading">
@@ -11,18 +12,19 @@
         <p class="course-head">All our Courses</p>
         <p class="course-subheading">Learn the most relevant skills by experienced professionals in international education.</p>
     </div>
+    <form class="ln-form" autocomplete="off">
+        <mat-form-field class="ln-form-field oauthKey">
+            <mat-label>OAuth Key</mat-label>
+            <input type="password" name="oauthKey" matInput [ngModel]="oauthKey" (change)="getCourses($event)" required
+                placeholder="OAuth Key">
+            <mat-error *ngIf="!oauthKey">
+                OAuth Key is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </form>
     <div class="container">
-        <div class="course-card_list">
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
-            <app-ln-course [courseTitle]="course_1" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
+        <div class="course-card_list" [(ngModel)]="courseId" name="courseId">
+            <app-ln-course *ngFor="let course of courses" [value]="course.id" [courseTitle]="course.name" [courseInstructor]="tutor1" [courseDate]="date" [courseDuration]="duration1"></app-ln-course>
         </div>
     </div>
 </section>
