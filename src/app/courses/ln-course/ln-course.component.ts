@@ -7,12 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LnCourseComponent implements OnInit {
 
+  @Input() courseTitle: string;
+  @Input() courseInstructor: string;
+  @Input() courseDuration: string;
+  @Input() courseDate: string;
+  @Input() courseImage: string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-@Input() courseTitle: string;
-@Input() courseInstructor: string;
-@Input() courseDuration:string;
-@Input() courseDate:string;
 }

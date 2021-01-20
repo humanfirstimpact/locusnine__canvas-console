@@ -58,7 +58,8 @@ export class ApiService {
           this._http
             .get(`${environment.api}/proxy/api/v1/courses`, {
               params: {
-                'per_page': '100'
+                'per_page': '100',
+                'include[]': ['public_description', 'course_image']
               },
               headers: {
                 api_token: this._encrypt(this._oauthKey),
