@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-body {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: black;
-    overflow: auto;
-}
-
 .section-banner {
     font-family: Roboto;
     min-height: 300px;
@@ -46,7 +38,6 @@ body {
 }
 
 .program-details {
-    // margin:100px 0 4px;
     font-size: 24px;
     line-height: 1.33;
     font-weight: 200;
@@ -59,10 +50,15 @@ body {
     margin-bottom: 50px;
 }
 
-.mat-chip,
 .mat-raised-button {
     background: #51bebb;
     color: #ffffff;
+}
+
+.mat-chip {
+    background: #fff;
+    color: #51bebb;
+    border: 1px solid #51bebb;
 }
 
 .section-description {
@@ -100,7 +96,7 @@ body {
     width: 100%;
 }
 
-.example-form{
+.example-form {
     display: flex;
     justify-content: space-between;
 }
@@ -108,12 +104,18 @@ body {
 .mat-ink-bar {
     background-color: #51bebb;
 }
-.totalVal{
-display: flex;
-font-size: 20px;
-margin-bottom: 0px;
+
+.totalVal {
+    display: flex;
+    font-size: 20px;
+    margin-bottom: 0px;
 }
 
-.totalVal p{
+.totalVal p {
     margin: 10px;
+}
+
+mat-form-field {
+    margin-right: 20px;
+    width: 300px;
 }

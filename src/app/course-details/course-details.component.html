@@ -26,18 +26,18 @@
                 <p class="desc">{{course.public_description}}</p>
             </div>
             <form class="example-form">
-                <mat-form-field class="example-full-width">
+                <mat-form-field>
                     <mat-label>Enter the number of Students</mat-label>
-                    <input type="number" matInput (keyup)="total($event.target.value)"
+                    <input type="number" name="participantsCount" matInput (keyup)="total($event.target.value)"
                         [(ngModel)]="participantsCount">
                 </mat-form-field>
             </form>
-            <form class="example-form">
-                <mat-form-field class="example-full-width">
+            <form>
+                <mat-form-field>
                     <mat-label>Purchaser Name</mat-label>
                     <input type="email" matInput placeholder="Ex. Purchaser Name">
                 </mat-form-field>
-                <mat-form-field class="example-full-width">
+                <mat-form-field>
                     <mat-label>Purchaser Email</mat-label>
                     <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
                     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -48,15 +48,19 @@
                     </mat-error>
                 </mat-form-field>
             </form>
-            <form class="example-form" #studentDetails *ngFor="let detail of studentDetails; let i = index;">
-                <mat-form-field>
-                    <mat-label>Student Name</mat-label>
-                    <input type="text" matInput placeholder="Student's Name">
-                </mat-form-field>
-                <mat-form-field class="example-full-width">
-                    <mat-label>Student Email</mat-label>
-                    <input type="email" matInput placeholder="Ex. pat@example.com">
-                </mat-form-field>
+            <form>
+                <ng-container *ngFor="let detail of studentDetails;">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Student Name</mat-label>
+                            <input type="text" matInput placeholder="Student's Name">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Student Email</mat-label>
+                            <input type="email" matInput placeholder="Ex. pat@example.com">
+                        </mat-form-field>
+                    </div>
+                </ng-container>
             </form>
             <div class="totalVal">
                 <p style="margin-left:0px;">Total Price:</p>

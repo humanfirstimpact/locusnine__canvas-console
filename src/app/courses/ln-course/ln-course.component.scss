@@ -12,6 +12,10 @@
     height: 100%;
 }
 
+.course-card:hover {
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
 img {
     width: 100%;
 }
@@ -24,6 +28,8 @@ img {
     width: 100%;
     height: 260px;
     overflow: hidden;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .course-card-desc {
@@ -62,15 +68,37 @@ img {
     justify-content: space-between;
 }
 
-.course-card-cost{
+.course-card-cost {
     display: flex;
     justify-content: space-between;
+    margin: 0 0 10px 0;
+}
+
+.course-rating {
+    color: gold;
+    font-size: 18px;
+}
+
+.course-cost {
+    color: #000000;
+    font-size: 18px;
+    background-color: #c5b583;
+    color: #fff;
+    padding: 5px 10px;
 }
 
 .mat-chip {
-    background: #51bebb;
-    color: #ffffff;
+    background: #fff;
+    color: #51bebb;
+    border: 1px solid #51bebb;
 }
-.course-card-chip{
-    margin-bottom: 0px;
+
+.course-card-chip {
+    margin: 0px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+.defaultCourseBanner {
+    width: 200px;
 }

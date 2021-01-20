@@ -13,16 +13,14 @@ import { map } from 'rxjs/operators';
 export class CourseDetailsComponent implements OnInit {
   totalVal: number;
 
-  public studentDetails: any[] = [{
-    name: '',
-    email: '',
-  }]
+  public studentDetails: any[] = [{ id: 0, name: '', email: '' }]
 
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
+  participantsCount: number;
   courseId: number;
   course: any;
   val: any;
@@ -53,11 +51,10 @@ export class CourseDetailsComponent implements OnInit {
   }
 
   total(val) {
-    this.studentDetails = [];
-    for (var i = 0; i < val; i++) {
-      this.studentDetails.push({})
+    this.studentDetails = [{ id: 0, name: '', email: '' }];
+    for (var i = 0; i < this.participantsCount - 1; i++) {
+      this.studentDetails.push({ id: i + 1, name: '', email: '' })
     }
-    console.log(val)
-    this.totalVal = (val * 300);
+    this.totalVal = (this.participantsCount * 300);
   }
 }
