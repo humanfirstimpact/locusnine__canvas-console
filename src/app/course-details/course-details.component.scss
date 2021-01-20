@@ -92,14 +92,28 @@ body {
 
 .example-form {
     min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+    max-width: 400px;
+    width: 50%;
 }
 
 .example-full-width {
     width: 100%;
 }
 
+.example-form{
+    display: flex;
+    justify-content: space-between;
+}
+
 .mat-ink-bar {
     background-color: #51bebb;
+}
+.totalVal{
+display: flex;
+font-size: 20px;
+margin-bottom: 0px;
+}
+
+.totalVal p{
+    margin: 10px;
 }

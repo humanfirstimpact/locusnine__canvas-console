@@ -1,4 +1,5 @@
-<section class="section-banner" [ngStyle]="{'background-image': 'url('+(course.image_download_url||'./assets/bannerImage.jpg')+')'}">
+<section class="section-banner"
+    [ngStyle]="{'background-image': 'url('+(course.image_download_url||'./assets/bannerImage.jpg')+')'}">
     <div class="heading">
         <p class="course-head">{{course.name}}</p>
         <p class="course-subheading">By {{course?.tutor?.short_name}}</p>
@@ -8,6 +9,7 @@
     <p>{{toDateString(course.start_at)}}</p>
     <p>1h</p>
     <p style="color: gold;">&#9733; &#9733; &#9733; &#9733;</p>
+    <p>USD 300</p>
     <p>
         <mat-chip-list aria-label="Tags">
             <mat-chip>Easy</mat-chip>
@@ -17,7 +19,7 @@
     </p>
 </div>
 <mat-tab-group>
-    <mat-tab label="Details">
+    <mat-tab label="DETAILS">
         <section class="section-description">
             <p class="desc-heading">Course Description</p>
             <div class="desc">
@@ -25,7 +27,18 @@
             </div>
             <form class="example-form">
                 <mat-form-field class="example-full-width">
-                    <mat-label>Email</mat-label>
+                    <mat-label>Enter the number of Students</mat-label>
+                    <input type="number" matInput (keyup)="total($event.target.value)"
+                        [(ngModel)]="participantsCount">
+                </mat-form-field>
+            </form>
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Purchaser Name</mat-label>
+                    <input type="email" matInput placeholder="Ex. Purchaser Name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Purchaser Email</mat-label>
                     <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
                     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                         Please enter a valid email address
@@ -35,10 +48,25 @@
                     </mat-error>
                 </mat-form-field>
             </form>
+            <form class="example-form" #studentDetails *ngFor="let detail of studentDetails; let i = index;">
+                <mat-form-field>
+                    <mat-label>Student Name</mat-label>
+                    <input type="text" matInput placeholder="Student's Name">
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Student Email</mat-label>
+                    <input type="email" matInput placeholder="Ex. pat@example.com">
+                </mat-form-field>
+            </form>
+            <div class="totalVal">
+                <p style="margin-left:0px;">Total Price:</p>
+                <p class="val"> $ {{totalVal}}</p>
+            </div>
             <a mat-raised-button href="https://www.stripe.com/" color="Primary" target="_blank">Checkout</a>
+
         </section>
     </mat-tab>
-    <mat-tab label="Students">
+    <mat-tab label="STUDENTS">
         <app-course-students [courseId]="courseId"></app-course-students>
     </mat-tab>
 </mat-tab-group>

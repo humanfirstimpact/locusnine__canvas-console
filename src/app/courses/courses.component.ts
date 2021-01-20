@@ -15,6 +15,7 @@ export class CoursesComponent implements OnInit {
   date = 'January 15, 2021';
   oauthKey: string;
   courses: any[];
+  cost: number= 300;
 
   constructor(
     private _api: ApiService,

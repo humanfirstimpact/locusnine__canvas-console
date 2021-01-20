@@ -12,7 +12,7 @@ export class LnCourseComponent implements OnInit {
   @Input() courseDuration: string;
   @Input() courseDate: string;
   @Input() courseImage: string;
-
+  @Input() courseCost:number;
   constructor() { }
 
   ngOnInit(): void {
