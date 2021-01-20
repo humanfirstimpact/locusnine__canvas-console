@@ -1,4 +1,4 @@
-<section class="section-banner" style="background-image: url(./assets/bannerImage.jpg);">
+<section class="section-banner" [ngStyle]="{'background-image': 'url('+(course.image_download_url||'./assets/bannerImage.jpg')+')'}">
     <div class="heading">
         <p class="course-head">{{course.name}}</p>
         <p class="course-subheading">By {{course?.tutor?.short_name}}</p>
