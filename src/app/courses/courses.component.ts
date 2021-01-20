@@ -9,13 +9,13 @@ import { ApiService } from 'src/services/api.service';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  course_1 = 'Being a Good Human';
-  tutor1 = 'International Schools';
-  duration1 = '1h';
-  date = 'January 15, 2021';
+  // course_1 = 'Being a Good Human';
+  // tutor1 = 'International Schools';
+  // duration1 = '1h';
+  // date = 'January 15, 2021';
   oauthKey: string;
   courses: any[];
-  cost: number= 300;
+  // cost: number = 300;
 
   constructor(
     private _api: ApiService,
@@ -36,6 +36,7 @@ export class CoursesComponent implements OnInit {
 
       courses.forEach(course => {
         course.tutor = user;
+        course.price = 300;
       });
 
       this.courses = courses;

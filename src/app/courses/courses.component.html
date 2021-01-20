@@ -20,7 +20,7 @@
                 <a [routerLink]="['/courses', course.id]" [state]="{data: course}">
                     <app-ln-course [value]="course.id" [courseTitle]="course.name"
                         [courseInstructor]="course.tutor.short_name" [courseDate]="toDateString(course.start_at)"
-                        [courseDuration]="duration1" [courseImage]="course.image_download_url" [courseCost]="cost">
+                        [courseDuration]="duration1" [courseImage]="course.image_download_url" [courseCost]="course.price">
                     </app-ln-course>
                 </a>
             </ng-container>

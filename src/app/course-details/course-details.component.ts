@@ -1,6 +1,4 @@
-import { CloseScrollStrategy } from '@angular/cdk/overlay';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -11,16 +9,19 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./course-details.component.scss']
 })
 export class CourseDetailsComponent implements OnInit {
-  totalVal: number;
 
   public studentDetails: any[] = [{ id: 0, name: '', email: '' }]
 
-  emailFormControl = new FormControl('', [
+  purchaserName = new FormControl('', [
+    Validators.required
+  ]);
+
+  purchaserEmail = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
 
-  participantsCount: number;
+  participantsCount: number = 1;
   courseId: number;
   course: any;
   val: any;
@@ -55,6 +56,5 @@ export class CourseDetailsComponent implements OnInit {
     for (var i = 0; i < this.participantsCount - 1; i++) {
       this.studentDetails.push({ id: i + 1, name: '', email: '' })
     }
-    this.totalVal = (this.participantsCount * 300);
   }
 }

@@ -9,7 +9,7 @@
     <p>{{toDateString(course.start_at)}}</p>
     <p>1h</p>
     <p style="color: gold;">&#9733; &#9733; &#9733; &#9733;</p>
-    <p>USD 300</p>
+    <p>USD {{course.price}}</p>
     <p>
         <mat-chip-list aria-label="Tags">
             <mat-chip>Easy</mat-chip>
@@ -25,49 +25,54 @@
             <div class="desc">
                 <p class="desc">{{course.public_description}}</p>
             </div>
-            <form class="example-form">
-                <mat-form-field>
-                    <mat-label>Enter the number of Students</mat-label>
-                    <input type="number" name="participantsCount" matInput (keyup)="total($event.target.value)"
-                        [(ngModel)]="participantsCount">
-                </mat-form-field>
-            </form>
             <form>
-                <mat-form-field>
-                    <mat-label>Purchaser Name</mat-label>
-                    <input type="email" matInput placeholder="Ex. Purchaser Name">
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Purchaser Email</mat-label>
-                    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                        Please enter a valid email address
-                    </mat-error>
-                    <mat-error *ngIf="emailFormControl.hasError('required')">
-                        Email is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Enter the number of Students</mat-label>
+                        <input type="number" min="1" name="participantsCount" matInput
+                            (change)="total($event.target.value)" [(ngModel)]="participantsCount">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Purchaser Name</mat-label>
+                        <input type="text" matInput [formControl]="purchaserName" placeholder="Ex. Purchaser Name">
+                        <mat-error *ngIf="purchaserName.hasError('required')">
+                            Purchaser Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Purchaser Email</mat-label>
+                        <input type="email" matInput [formControl]="purchaserEmail" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="purchaserEmail.hasError('email') && !purchaserEmail.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="purchaserEmail.hasError('required')">
+                            Purchaser Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <ng-container *ngFor="let detail of studentDetails;">
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Student Name</mat-label>
+                                <input type="text" matInput placeholder="Student's Name">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Student Email</mat-label>
+                                <input type="email" matInput placeholder="Ex. pat@example.com">
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="totalVal">
+                    <p style="margin-left:0px;">Total Price:</p>
+                    <p class="val"> USD {{participantsCount * course.price}}</p>
+                </div>
+                <a mat-raised-button href="https://www.stripe.com/" color="Primary" target="_blank"
+                    [disabled]="purchaserName.invalid || purchaserEmail.invalid">Checkout</a>
             </form>
-            <form>
-                <ng-container *ngFor="let detail of studentDetails;">
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Student Name</mat-label>
-                            <input type="text" matInput placeholder="Student's Name">
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label>Student Email</mat-label>
-                            <input type="email" matInput placeholder="Ex. pat@example.com">
-                        </mat-form-field>
-                    </div>
-                </ng-container>
-            </form>
-            <div class="totalVal">
-                <p style="margin-left:0px;">Total Price:</p>
-                <p class="val"> $ {{totalVal}}</p>
-            </div>
-            <a mat-raised-button href="https://www.stripe.com/" color="Primary" target="_blank">Checkout</a>
-
         </section>
     </mat-tab>
     <mat-tab label="STUDENTS">
