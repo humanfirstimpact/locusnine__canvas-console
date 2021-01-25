@@ -56,7 +56,7 @@ export class CourseStudentsComponent implements OnInit, OnChanges {
     this._api.sendCertificates(this.courseId, this.selectedStudents)
       .subscribe(response => {
         this.sendingEmails = false;
-        this._snackBar.open(`Sent: ${response.sent}, failed: ${response.failed}`, null, {
+        this._snackBar.open(`Sent: ${response.queued}, failed: ${response.failed}`, null, {
           duration: 2000,
         });
       });
