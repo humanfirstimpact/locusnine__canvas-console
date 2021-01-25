@@ -1,0 +1,81 @@
+<section class="section-banner"
+    [ngStyle]="{'background-image': 'url('+(course.image_download_url||'./assets/bannerImage.jpg')+')'}">
+    <div class="heading">
+        <p class="course-head">{{course.name}}</p>
+        <p class="course-subheading">By {{course?.tutor?.short_name}}</p>
+    </div>
+</section>
+<div class="program-details">
+    <p>{{toDateString(course.start_at)}}</p>
+    <p>1h</p>
+    <p style="color: gold;">&#9733; &#9733; &#9733; &#9733;</p>
+    <p>USD {{course.price}}</p>
+    <p>
+        <mat-chip-list aria-label="Tags">
+            <mat-chip>Easy</mat-chip>
+            <mat-chip>All</mat-chip>
+            <mat-chip>Tag 3</mat-chip>
+        </mat-chip-list>
+    </p>
+</div>
+<mat-tab-group>
+    <mat-tab label="DETAILS">
+        <section class="section-description">
+            <p class="desc-heading">Course Description</p>
+            <div class="desc">
+                <p class="desc">{{course.public_description}}</p>
+            </div>
+            <form>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Enter the number of Students</mat-label>
+                        <input type="number" min="1" name="participantsCount" matInput
+                            (change)="total($event.target.value)" [(ngModel)]="participantsCount">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>Purchaser Name</mat-label>
+                        <input type="text" matInput [formControl]="purchaserName" placeholder="Ex. Purchaser Name">
+                        <mat-error *ngIf="purchaserName.hasError('required')">
+                            Purchaser Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Purchaser Email</mat-label>
+                        <input type="email" matInput [formControl]="purchaserEmail" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="purchaserEmail.hasError('email') && !purchaserEmail.hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="purchaserEmail.hasError('required')">
+                            Purchaser Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <ng-container *ngFor="let detail of studentDetails; let i= index;trackBy:trackByIndex;">
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Student Name</mat-label>
+                                <input type="text" name=a{{i}} [(ngModel)]="studentDetails[i].name" matInput placeholder="Student's Name">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Student Email</mat-label>
+                                <input type="email" name=a{{i}} [(ngModel)]="studentDetails[i].email" matInput placeholder="Ex. pat@example.com">
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+                <div class="totalVal">
+                    <p style="margin-left:0px;">Total Price:</p>
+                    <p class="val"> USD {{participantsCount * course.price}}</p>
+                </div>
+                <a mat-raised-button href="https://www.stripe.com/" color="Primary" target="_blank"
+                    [disabled]="purchaserName.invalid || purchaserEmail.invalid" (click)="sendCourseStudentsList()">Checkout</a>
+            </form>
+        </section>
+    </mat-tab>
+    <mat-tab label="STUDENTS">
+        <app-course-students [courseId]="courseId"></app-course-students>
+    </mat-tab>
+</mat-tab-group>

@@ -103,6 +103,26 @@ export class ApiService {
     });
   }
 
+  sendCourseStudentsList(courseId: string, studentDetails: any): Observable<any> {
+    return new Observable(observer => {
+      this._http.post(`${environment.api}/send-course_details`, studentDetails, {
+        params: {
+          courseId: courseId
+        },
+        headers: {
+          api_token: this._encrypt(this._oauthKey),
+          client_key: encodeBase64(this._clientKeyPair.publicKey)
+        }
+      }).subscribe((data: any) => {
+        observer.next(data);
+        observer.complete();
+      }, (error) => {
+        observer.error(error);
+        observer.complete();
+      });
+    });
+  }
+
   private _getServerPublicKey(): Observable<Uint8Array> {
     return new Observable(observer => {
       if (!this._serverPublicKey) {
