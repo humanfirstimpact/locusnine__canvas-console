@@ -64,7 +64,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    color: #3f51b5;
+    color: #51bebb;
 }
 
 .ln-spinner::before {
@@ -98,3 +98,9 @@
 .pendingInvite {
     color: #aaa;
 }
+
+.mat-error, .mat-form-field-invalid .mat-input-element{
+    color: #51bebb;
+    caret-color: #51bebb;
+}
+

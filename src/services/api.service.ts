@@ -114,14 +114,14 @@ export class ApiService {
     });
   }
 
-  sendCertificates(courseId: string, selectedStudents: any): Observable<any> {
+  sendCertificates(courseId: string, selectedStudents: any, option:any): Observable<any> {
     return new Observable(observer => {
       this._http.post(`${environment.api}/send-certificates`, selectedStudents, {
         params: {
           courseId: courseId
         },
         headers: {
-          api_token: this._encrypt(this._oauthKey),
+          api_token: this._encrypt(option.oauthKey),
           client_key: encodeBase64(this._clientKeyPair.publicKey)
         }
       }).subscribe((data: any) => {

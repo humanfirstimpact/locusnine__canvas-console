@@ -64,8 +64,8 @@ export class CourseStudentsComponent implements OnInit, OnChanges {
 
   sendCompletionCertificate() {
     this.sendingEmails = true;
-    const options = { oauthKey: this.oauthKey };
-    this._api.sendCertificates(this.courseId, this.selectedStudents)
+    const option = { oauthKey: this.oauthKey };
+    this._api.sendCertificates(this.courseId, this.selectedStudents, option)
       .subscribe(response => {
         this.sendingEmails = false;
         this._snackBar.open(`Sent: ${response.queued}, failed: ${response.failed}`, null, {
