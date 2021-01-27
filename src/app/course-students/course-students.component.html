@@ -4,6 +4,7 @@
             <mat-label>OAuth Key</mat-label>
             <input type="password" name="oauthKey" matInput [ngModel]="oauthKey" (change)="getCourse($event)" required
                 placeholder="OAuth Key">
+            <mat-error *ngIf="!oauthKey">
                 OAuth Key is <strong>required</strong>
             </mat-error>
         </mat-form-field>
