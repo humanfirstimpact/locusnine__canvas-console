@@ -9,14 +9,16 @@ import { ApiService } from 'src/services/api.service';
 })
 export class CourseStudentsComponent implements OnInit, OnChanges {
   checked: boolean = false;
-  loading: boolean = false;
-  sendingEmails: boolean = false;
-  courses: any[];
-  students: any[];
   columns: string[] = ['select', 'name', 'email', 'completed'];
+  courses: any[];
+  loading: boolean = false;
+  oauthKey: string;
   selectedStudents = [];
+  sendingEmails: boolean = false;
+  students: any[];
 
   @Input() courseId: string;
+  
 
   constructor(
     private _api: ApiService,
@@ -26,6 +28,14 @@ export class CourseStudentsComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  getCourse(e) {
+    this.oauthKey = e.currentTarget.value;
+    this._api.getCourseforUserinput({ oauthKey: this.oauthKey})
+      .subscribe(courses => {
+        this.courses = courses;
+      });
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.courseId && changes.courseId.currentValue) {
       this.getStudents();
@@ -33,9 +43,10 @@ export class CourseStudentsComponent implements OnInit, OnChanges {
   }
 
   getStudents() {
+    const options = { oauthKey: this.oauthKey}
     this.loading = true;
     this.selectedStudents.splice(0, this.selectedStudents.length);
-    this._api.getCourseStudents(this.courseId)
+    this._api.getCourseStudents(this.courseId, options)
       .subscribe(students => {
         this.students = students;
         this.loading = false;
@@ -53,6 +64,7 @@ export class CourseStudentsComponent implements OnInit, OnChanges {
 
   sendCompletionCertificate() {
     this.sendingEmails = true;
+    const options = { oauthKey: this.oauthKey };
     this._api.sendCertificates(this.courseId, this.selectedStudents)
       .subscribe(response => {
         this.sendingEmails = false;

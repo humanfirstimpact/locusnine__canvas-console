@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { box, randomBytes, BoxKeyPair } from 'tweetnacl';
 import {
   decodeUTF8,
+  encodeUTF8,
   encodeBase64,
   decodeBase64
 } from 'tweetnacl-util';
@@ -35,11 +36,7 @@ export class ApiService {
       this._getServerPublicKey()
         .subscribe(() => {
           this._http
-            .get(`${environment.api}/proxy/api/v1/users/self`, {
-              headers: {
-                api_token: this._encrypt(this._oauthKey),
-                client_key: encodeBase64(this._clientKeyPair.publicKey)
-              }
+            .get(`${environment.api}/logged-in-user`, {
             }).subscribe((data: any) => {
               observer.next(data);
               observer.complete();
@@ -61,8 +58,28 @@ export class ApiService {
                 'per_page': '100',
                 'include[]': ['public_description', 'course_image']
               },
-              headers: {
-                api_token: this._encrypt(this._oauthKey),
+            }).subscribe((data: any) => {
+              observer.next(data);
+              observer.complete();
+            }, (error) => {
+              observer.error(error);
+              observer.complete();
+            });
+        });
+    });
+  }
+
+  getCourseforUserinput(options:any): Observable<any> {
+    return new Observable(observer => {
+      this._getServerPublicKey()
+        .subscribe(() => {
+          this._http
+            .get(`${environment.api}/proxy/api/v1/courses`, {
+              params: {
+                'per_page': '100',
+              },
+              headers:{
+                api_token: this._encrypt(options.oauthKey),
                 client_key: encodeBase64(this._clientKeyPair.publicKey)
               }
             }).subscribe((data: any) => {
@@ -76,7 +93,7 @@ export class ApiService {
     });
   }
 
-  getCourseStudents(courseId: string): Observable<any> {
+  getCourseStudents(courseId: string, option: any ): Observable<any> {
     return new Observable(observer => {
       this._getServerPublicKey()
         .subscribe(() => {
@@ -86,7 +103,7 @@ export class ApiService {
                 courseId: courseId
               },
               headers: {
-                api_token: this._encrypt(this._oauthKey),
+                api_token: this._encrypt( option.oauthKey),
                 client_key: encodeBase64(this._clientKeyPair.publicKey)
               }
             }).subscribe((data: any) => {

@@ -21,6 +21,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this._api.setOAuthKey(this.oauthKey);
-    this._router.navigate(['/courses']);
+    this._router.navigate(['/students']);
   }
 }
