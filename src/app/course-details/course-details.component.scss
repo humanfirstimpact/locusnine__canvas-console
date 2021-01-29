@@ -52,7 +52,6 @@
 }
 
 .mat-raised-button {
-    background: #51bebb;
     color: #ffffff;
 }
 
@@ -81,6 +80,7 @@
 .desc {
     margin: 0px;
     font-weight: 300;
+    margin-bottom: 30px;
 }
 
 .mat-raised-button {
@@ -100,10 +100,6 @@
 .example-form {
     display: flex;
     justify-content: space-between;
-}
-
-.mat-ink-bar {
-    background-color: #51bebb;
 }
 
 .totalVal {
