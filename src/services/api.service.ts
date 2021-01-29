@@ -36,7 +36,7 @@ export class ApiService {
       this._getServerPublicKey()
         .subscribe(() => {
           this._http
-            .get(`${environment.api}/logged-in-user`, {
+            .get(`${environment.api}/api/logged-in-user`, {
             }).subscribe((data: any) => {
               observer.next(data);
               observer.complete();
@@ -51,7 +51,7 @@ export class ApiService {
   getCourses(): Observable<any> {
     return new Observable(observer => {
       this._http
-        .get(`${environment.api}/proxy/api/v1/courses`, {
+        .get(`${environment.api}/api/proxy/api/v1/courses`, {
           params: {
             'per_page': '100',
             'include[]': ['public_description', 'course_image']
@@ -71,7 +71,7 @@ export class ApiService {
       this._getServerPublicKey()
         .subscribe(() => {
           this._http
-            .get(`${environment.api}/proxy/api/v1/courses`, {
+            .get(`${environment.api}/api/proxy/api/v1/courses`, {
               params: {
                 'per_page': '100',
               },
@@ -95,7 +95,7 @@ export class ApiService {
       this._getServerPublicKey()
         .subscribe(() => {
           this._http
-            .get(`${environment.api}/course-students`, {
+            .get(`${environment.api}/api/course-students`, {
               params: {
                 courseId: courseId
               },
@@ -114,9 +114,9 @@ export class ApiService {
     });
   }
 
-  sendCertificates(courseId: string, selectedStudents: any, option:any): Observable<any> {
+  sendCertificates(courseId: string, selectedStudents: any, option: any): Observable<any> {
     return new Observable(observer => {
-      this._http.post(`${environment.api}/send-certificates`, selectedStudents, {
+      this._http.post(`${environment.api}/api/send-certificates`, selectedStudents, {
         params: {
           courseId: courseId
         },
@@ -137,7 +137,7 @@ export class ApiService {
   private _getServerPublicKey(): Observable<Uint8Array> {
     return new Observable(observer => {
       if (!this._serverPublicKey) {
-        this._http.get(`${environment.api}/keys`)
+        this._http.get(`${environment.api}/api/keys`)
           .subscribe((data: any) => {
             const keyRaw = data.publicKey;
             const key = decodeBase64(keyRaw);
