@@ -26,7 +26,7 @@
                 <th mat-header-cell *matHeaderCellDef>
                 </th>
                 <td mat-cell *matCellDef="let element">
-                    <mat-checkbox (change)="checkboxChanged($event)" id={{element.id}} [checked]=false>
+                    <mat-checkbox color="primary" (change)="checkboxChanged($event)" id={{element.id}} [checked]=false>
                     </mat-checkbox>
                 </td>
             </ng-container>
@@ -92,5 +92,5 @@
     </button>
 </div>
 <ng-container *ngIf="sendingEmails">
-    <div class="ln-spinner"></div>
+    <div class="ln-spinner" color="primary"></div>
 </ng-container>
