@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 body {
     font-weight: 400;
@@ -10,26 +10,33 @@ body {
 
 .section-banner {
     font-family: Roboto;
-    min-height: 300px;
+    height: 75%;
     padding: 0;
     position: relative;
     box-sizing: border-box;
-    background: #283e4a no-repeat top right/cover;
-    border-top: 6px solid #c5b583;
+    background: #ffffff no-repeat top;
 }
 
 .heading {
-    padding-top: 70px;
-    height: 100%;
-    text-align: center;
-    font-size: 48px;
-    font-weight: 300;
-    color: #ffffff;
-    line-height: 28px;
+    position: absolute;
+    width: 764px;
+    height: 180px;
+    left: 120px;
+    top: 142px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 58px;
+    line-height: 90px;
 }
 
-.course-head {
-    margin: 24px;
+.course-head{
+    margin: 0px;
+}
+
+.course-subheading {
+    margin: 0px;
+    color: #51bebb;
 }
 
 .sub-heading {
@@ -39,7 +46,6 @@ body {
 
 .course-section {
     padding: 8px 4px;
-    background-color: #f3f6f8;
     overflow: auto;
     margin-bottom: 100px;
 }
@@ -51,12 +57,6 @@ body {
     font-weight: 200;
     color: rgba(0, 0, 0, 0.9);
     text-align: center;
-}
-
-.course-subheading {
-    font-size: 24px;
-    line-height: 1.5;
-    margin-bottom: 50px;
 }
 
 .ln-form {
