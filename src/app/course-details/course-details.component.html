@@ -1,30 +1,126 @@
-<section class="section-banner"
-    [ngStyle]="{'background-image': 'url('+(course.image_download_url||'./assets/bannerImage.jpg')+')'}">
-    <div class="heading">
-        <p class="course-head">{{course.name}}</p>
-        <p class="course-subheading">By {{course?.tutor?.short_name}}</p>
-    </div>
-</section>
-<div class="program-details">
-    <p>{{toDateString(course.start_at)}}</p>
-    <p>1h</p>
-    <p style="color: gold;">&#9733; &#9733; &#9733; &#9733;</p>
-    <p>USD {{course.price}}</p>
-    <p>
-        <mat-chip-list aria-label="Tags">
-            <mat-chip>Easy</mat-chip>
-            <mat-chip>All</mat-chip>
-            <mat-chip>Tag 3</mat-chip>
-        </mat-chip-list>
-    </p>
+<header class="header-sticky">
+    <img src="../../assets/iss-logo.png" alt="">
+</header>
+<div class="course-description">
+    <section class="section-banner">
+        <div class="heading">
+            <p class="course-head">Planning and Managing School Budgets
+                Under Challenging Market Condition</p>
+            <p class="course-subhead">Are you trying to figure out how to position your school for financial success
+                despite the challenging market conditions?
+            </p>
+            <div class="course-details">
+                <img class="course-intruct" src="../../assets/course_instructor.png" alt="">
+                <div class="instruct-title">
+                    <p class="course-subheading">Created By</p>
+                    <p class="course-subheading-desc">{{course?.tutor?.short_name}} </p>
+                </div>
+                <div class="instruct-title">
+                    <p class="course-subheading">Category</p>
+                    <p class="course-subheading-desc">Professional Development</p>
+                </div>
+                <div class="instruct-title">
+                    <p class="course-subheading">Ratings</p>
+                    <p class="course-subheading-desc" style="color:gold">&#9733; &#9733; &#9733; &#9733;</p>
+                </div>
+            </div>
+        </div>
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab class="mat-tab-label-content" label="Overview">
+                <p class="course-overview"> Course Description</p>
+                <p class="course-overview-desc">{{course.public_description}}
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the
+                    1500s, when an unknown printer took a galley of type and scrambled it to
+                    make a type specimen book. It has survived not only five centuries,
+                    <br> but also
+                    It was popularised in the 1960s with the release of Letraset sheets containing
+                    Lorem Ipsum passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum
+                    <br>
+                </p>
+                <button mat-button color="primary">Read More</button>
+                <div class="what-u-will-learn">
+                    <p class="course-overview">
+                        What will you learn
+                    </p>
+                    <ul class="ul">
+                        <li class="li"><span class="material-icons">
+                                check_circle_outline
+                            </span> Lorem ipsum dolor sit amet.
+                        </li>
+                        <li class="li"><span class="material-icons">
+                                check_circle_outline
+                            </span> Lorem ipsum dolor sit amet.
+                        </li>
+                        <li class="li"><span class="material-icons">
+                                check_circle_outline
+                            </span> Lorem ipsum dolor sit amet.
+                        </li>
+                        <li class="li"><span class="material-icons">
+                                check_circle_outline
+                            </span> Lorem ipsum dolor sit amet.
+                        </li>
+                        <li class="li"><span class="material-icons">
+                                check_circle_outline
+                            </span> Lorem ipsum dolor sit amet.
+                        </li>
+                        <li class="li"><span class="material-icons">
+                                check_circle_outline
+                            </span> Lorem ipsum dolor sit amet.
+                        </li>
+                    </ul>
+                </div>
+                <div class="what-u-will-learn">
+                    <p class="course-overview">
+                        Requirements
+                    </p>
+                    <ul>
+                        <li>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae, natus!
+                        </li>
+                        <li> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, deleniti.
+                        </li>
+                    </ul>
+                </div>
+            </mat-tab>
+            <mat-tab class="mat-tab-label-content" label="Ciriculum">
+                Content 2
+            </mat-tab>
+            <mat-tab class="mat-tab-label-content" label="Instructor">
+                <p class="course-overview">About Instructor</p>
+                <div class="instructor">
+                    <img class="img-bdr" src="../../assets/course_instructor.png" alt="">
+                    <div class="instruct">
+                        <p class="course-overview">{{course?.tutor?.short_name}}</p>
+                        <p class="sub-title"> Full-Stack Developer</p>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab class="mat-tab-label-content" label="Reviews">
+                Content 4
+            </mat-tab>
+        </mat-tab-group>
+    </section>
+    <section class="course-enroll">
+        <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae beatae error earum quasi ab debitis amet
+                reiciendis, minus voluptate asperiores numquam placeat tempore fugiat optio. Error neque excepturi cum
+                nihil recusandae quam fugiat corrupti delectus aliquam quidem dignissimos autem et, iure rerum qui,
+                veniam quis nesciunt vero ducimus minima perferendis.</p>
+        </div>
+    </section>
 </div>
+<!-- 
+<p>{{toDateString(course.start_at)}}</p>
+<p>1h</p>
+<p>USD {{course.price}}</p> -->
 
 <section class="section-description">
-    <p class="desc-heading">Course Description</p>
     <div class="desc">
-        <p class="desc">{{course.public_description}}</p>
+        <p class="desc"></p>
     </div>
-    <form>
+    <!-- <form>
         <div>
             <mat-form-field>
                 <mat-label>Enter the number of Students</mat-label>
@@ -71,5 +167,5 @@
         </div>
         <a mat-raised-button href="https://www.stripe.com/" color="primary" target="_blank"
             [disabled]="purchaserName.invalid || purchaserEmail.invalid">Checkout</a>
-    </form>
+    </form> -->
 </section>

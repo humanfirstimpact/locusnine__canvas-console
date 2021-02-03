@@ -1,19 +1,59 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section class="section-banner" style="background-image:url(./assets/banner_image.png); background-repeat: no-repeat;">
+    <div class="header-sticky">
+        <img class="img" src="../../assets/iss-logo.png" alt="">
+    </div>
     <div class="heading">
         <p class="course-head">International School Services</p>
-        <p class="course-subheading">Be better
-        </p>
+        <p class="course-subheading">Professional Learning</p>
+        <input type="text" name="" id="" placeholder="What do you want to learn?" class="text-box-header">
     </div>
+    <img class="background-pic" src="../../assets/background-pic.png" alt="">
 </section>
 <section class="course-section">
     <div class="course-heading">
-        <p class="course-head">All our Courses</p>
-        <p class="course-subheading">Learn the most relevant skills by experienced professionals in international
-            education.</p>
+        <p class="course-head">ALL OUR COURSES</p>
     </div>
     <div class="container">
         <div class="filters">
-            <p>Filters</p>
+            <div class="filter-class category">
+                <p>Category <button mat-icon-button color="primary">
+                    <mat-icon class="material-icons">remove</mat-icon>
+                  </button></p>
+                <mat-checkbox color="primary">Professional Development</mat-checkbox>
+                <mat-checkbox color="primary">School Startup and Management</mat-checkbox>
+            </div>
+            <div class="filter-class ratings">
+                <p>Ratings <button mat-icon-button color="primary">
+                    <mat-icon class="material-icons">remove</mat-icon>
+                  </button></p>
+                  <mat-checkbox color="gold"> <span style="color: gold;">&#9733; &#9733; &#9733; &#9733; &#9733;</span> 4.5+ (10,000)</mat-checkbox>
+                <mat-checkbox color="gold"><span style="color: gold;">&#9733; &#9733; &#9733; &#9733;</span> 4+ (10,000)</mat-checkbox>
+                <mat-checkbox color="gold"><span style="color: gold;">&#9733; &#9733; &#9733;</span>3+ (10,000)</mat-checkbox>
+            </div>
+            <div class="filter-class level">
+                <p>Level <button mat-icon-button color="primary">
+                    <mat-icon class="material-icons">remove</mat-icon>
+                  </button></p>
+                  <mat-checkbox color="primary">Beginner (10,000)</mat-checkbox>
+                <mat-checkbox color="primary">Imtermediate (10,000)</mat-checkbox>
+                <mat-checkbox color="primary">Expert (10,000)</mat-checkbox>
+            </div>
+            <div class="filter-class batch-type">
+                <p>Batch-Type <button mat-icon-button color="primary">
+                    <mat-icon class="material-icons">remove</mat-icon>
+                  </button></p>
+                  <mat-checkbox color="primary">Weekend (10,000)</mat-checkbox>
+                <mat-checkbox color="primary">Weekday (10,000)</mat-checkbox>
+            </div>
+            <div class="filter-class course length">
+                <p>Course-Length <button mat-icon-button color="primary">
+                    <mat-icon class="material-icons">remove</mat-icon>
+                  </button></p>
+                  <mat-checkbox color="primary">Under 2 hours (10,000)</mat-checkbox>
+                <mat-checkbox color="primary"> 2-10 hours (10,000)</mat-checkbox>
+                <mat-checkbox color="primary">10+ hours (10,000)</mat-checkbox>
+            </div>
         </div>
         <div class="course-card_list">
             <ng-container *ngFor="let course of courses">

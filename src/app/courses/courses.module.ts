@@ -9,7 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { CoursesComponent } from './courses.component';
 import {MatChipsModule} from '@angular/material/chips';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [CoursesComponent ,LnCourseComponent],
@@ -22,6 +24,9 @@ import {MatChipsModule} from '@angular/material/chips';
     MatInputModule,
     MatSelectModule,
     MatChipsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   bootstrap: [CoursesComponent]
 })

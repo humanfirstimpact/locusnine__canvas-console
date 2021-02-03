@@ -1,28 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
+header {
+    height: 70px;
+    background-color: #c7f0f0;
+}
+.course-description{
+    display: flex;
+    flex-wrap:wrap;
+}
+section {
+    margin-left: 100px;}
+.header-sticky img {
+    height: 36px;
+    padding: 20px 33px;
+}
 .section-banner {
     font-family: Roboto;
-    min-height: 300px;
     padding: 0;
-    position: relative;
     box-sizing: border-box;
-    background: #283e4a no-repeat top right/cover;
-    border-top: 6px solid #c5b583;
+    width: 640px;
 }
-
 .heading {
-    padding-top: 70px;
-    height: 100%;
-    text-align: center;
-    font-size: 48px;
-    font-weight: 300;
-    color: #ffffff;
-    line-height: 28px;
+    margin-top: 50px;
 }
-
+.mat-tab-label-content {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #46a39d;
+}
 .course-head {
-    margin: 24px;
-    line-height: 1.2em;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 16px;
+    color: #383b41;
 }
 
 .sub-heading {
@@ -45,22 +61,64 @@
     color: rgba(0, 0, 0, 0.9);
 }
 
-.course-subheading {
-    font-size: 24px;
-    line-height: 1.5;
+.course-subhead {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 50px;
+    padding-right: 150px;
+}
+.course-details {
+    display: flex;
+    flex-wrap: wrap;
     margin-bottom: 50px;
 }
-
+.course-subheading {
+    margin: 0px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #383b41;
+}
+.course-subheading-desc {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+}
+.instruct-title {
+    padding: 0px 10px;
+}
+.course-intruct {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
 .mat-raised-button {
     color: #ffffff;
 }
 
-.mat-chip {
-    background: #fff;
-    color: #51bebb;
-    border: 1px solid #51bebb;
+.course-overview {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #383b41;
 }
-
+.course-overview-desc {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    color: #595959;
+}
 .section-description {
     font-family: Roboto;
     font-size: 14px;
@@ -115,4 +173,38 @@
 mat-form-field {
     margin-right: 20px;
     width: 300px;
+}
+ .ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ .li{
+    width: 300px;
+}
+.course-enroll {
+    width:400px;
+    background: #ffffff;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.16);
+    border-radius: 5px;
+}
+.instructor{
+    display: flex;
+    flex-direction: row;
+}
+.img-bdr{
+border-radius: 50%;
+width: 91px;
+height: 91px;
+}
+
+.subtitle{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
 }
